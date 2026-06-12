@@ -1,62 +1,58 @@
-# Task Management API
+Task Management API
 
-A simple Task Management API built using FastAPI, SQLAlchemy, and SQLite.
+A secure Task Management API built using FastAPI, SQLAlchemy, JWT Authentication, and SQLite.
 
-## Features
+Features
 
+- JWT Login Authentication
+- User Registration
+- Protected Routes
 - Create Task
 - Get All Tasks
 - Get Single Task
 - Update Task
 - Delete Task
+- User-specific Tasks
 - Request Validation
 - Swagger API Documentation
+- Proper Folder Structure
 
-## Tech Stack
+Tech Stack
 
 - Python
 - FastAPI
 - SQLAlchemy
 - SQLite
+- JWT Authentication
 - Uvicorn
+- Swagger UI
 
-## Installation
+Installation
 
-Clone the repository:
+Clone repository:
 
-```bash
 git clone https://github.com/YOUR_USERNAME/task-management-api.git
-```
 
 Go to project folder:
 
-```bash
 cd task-management-api
-```
 
 Install dependencies:
 
-```bash
 pip install -r requirements.txt
-```
 
 Run server:
 
-```bash
 uvicorn main:app --reload
-```
 
-## API Documentation
+API Documentation
 
 Open:
 
-```bash
 http://127.0.0.1:8000/docs
-```
 
-## Project Structure
+Project Structure
 
-```bash
 task-management-api/
 │── core/
 │── database/
@@ -66,4 +62,3 @@ task-management-api/
 │── services/
 │── main.py
 │── requirements.txt
-```
