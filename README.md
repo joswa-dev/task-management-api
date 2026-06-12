@@ -31,7 +31,7 @@ Installation
 
 Clone repository:
 
-git clone https://github.com/YOUR_USERNAME/task-management-api.git
+git clone https://github.com/joswa-dev/task-management-api
 
 Go to project folder:
 
