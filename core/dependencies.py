@@ -17,14 +17,18 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         )
 
         user_id = payload.get("user_id")
+        role = payload.get("role")
 
         if user_id is None:
             raise HTTPException(
                 status_code=401,
                 detail="Invalid token"
             )
-
-        return payload
+        
+        return {
+            "user_id": user_id,
+            "role": role
+        }
 
     except JWTError:
         raise HTTPException(

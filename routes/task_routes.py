@@ -51,7 +51,11 @@ def update_task(
     task: TaskCreate,
     current_user: dict = Depends(get_current_user)
 ):
-    return update_task_service(task_id, task)
+    return update_task_service(
+        task_id, 
+        task,
+        current_user
+    )
 
 
 @router.delete("/{task_id}")

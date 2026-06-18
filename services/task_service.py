@@ -103,45 +103,27 @@ def get_task_by_id_service(task_id: int):
     db.close()
 
     return response
-def update_task_service(task_id: int, task):
+def update_task_service(task_id: int, task, current_user):
 
     db = SessionLocal()
 
     existing_task = db.query(Task).filter(Task.id == task_id).first()
+    
+    if (
+        current_user["role"] != "admin"
+        and existing_task.user_id !=
+current_user["user_id"]
+    ):
 
-    if not existing_task:
         db.close()
-        return HTTPException(
-            status_code=404,
-            detail="Task not found"
-        )
-
+        return {
+            "message": "You are not allowed to update this task"
+        }
+    
     existing_task.title = task.title
     existing_task.description = task.description
     existing_task.completed = task.completed
 
-    db.commit()
-    db.refresh(existing_task)
-
-    db.close()
-
-    return {
-        "message": "Task updated successfully",
-        "task": {
-            "id": existing_task.id,
-            "title": existing_task.title,
-            "description": existing_task.description,
-            "completed": existing_task.completed
-        }
-    }
-
-    
-    return {
-        "id": task.id,
-        "title": task.title,
-        "description": task.description,
-        "completed": task.completed
-    }
 
 def create_user_service(user: UserCreate):
 
@@ -186,7 +168,7 @@ def login_user_service(user):
     db = SessionLocal()
 
     existing_user = db.query(User).filter(
-        User.email == user.username
+        User.username == user.username
     ).first()
 
     if not existing_user:
